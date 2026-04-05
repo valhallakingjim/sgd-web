@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGD — Búsqueda</title>
+    <link rel="stylesheet" href="/css/bd.css">
+    <link rel="stylesheet" href="/css/busqueda.css">
+</head>
+<body>
+
+<div class="contenedor">
+
+    <div class="banner verde">
+        <h1>🔍 BÚSQUEDA INTELIGENTE DE RADICADOS</h1>
+        <p>Escriba para buscar — los resultados aparecen automáticamente</p>
+    </div>
+
+    <!-- Campo de búsqueda -->
+    <div class="barra-busqueda">
+        <div class="busqueda-izq">
+            <span class="lupa">🔎</span>
+            <input
+                type="text"
+                id="campo-busqueda"
+                placeholder="Buscar por radicado, nombre, asunto o fecha..."
+                oninput="buscarEnTiempoReal()"
+                autocomplete="off"
+            >
+        </div>
+        <div class="busqueda-der">
+            <select id="filtro" onchange="buscarEnTiempoReal()">
+                <option value="todos">Todos</option>
+                <option value="radicado">Radicado</option>
+                <option value="destinatario">Destinatario</option>
+                <option value="remitente">Remitente</option>
+                <option value="asunto">Asunto</option>
+            </select>
+            <button class="btn azul" onclick="buscarEnTiempoReal()">
+                🔍 Buscar
+            </button>
+            <button class="btn gris"
+                    onclick="window.location.href='/pages/menu.html'">
+                ⬅ Menú
+            </button>
+        </div>
+    </div>
+
+    <!-- Contador -->
+    <div class="toolbar">
+        <span id="total-resultados">Ingrese un término para buscar</span>
+    </div>
+
+    <!-- Tabla resultados -->
+    <div class="tabla-contenedor">
+        <table id="tabla-resultados">
+            <thead>
+                <tr>
+                    <th>N° Radicado</th>
+                    <th>Fecha</th>
+                    <th>Remitente</th>
+                    <th>Destinatario</th>
+                    <th>Asunto</th>
+                    <th>Estado</th>
+                    <th>Tipo</th>
+                    <th>Días Resp.</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpo-resultados">
+                <tr>
+                    <td colspan="8" class="cargando">
+                        Ingrese un término de búsqueda para ver resultados
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <footer>Sistema de Gestión Documental v1.0 | © 2026</footer>
+</div>
+
+<script src="/js/busqueda.js"></script>
+</body>
+</html>

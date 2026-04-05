@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGD — Base de Datos</title>
+    <link rel="stylesheet" href="/css/bd.css">
+</head>
+<body>
+
+<div class="contenedor">
+
+    <!-- Banner -->
+    <div class="banner">
+        <h1>🗄 BASE DE DATOS — RADICADOS</h1>
+        <p>Todos los documentos registrados en el sistema</p>
+    </div>
+
+    <!-- Barra de búsqueda -->
+    <div class="barra-busqueda">
+        <div class="busqueda-izq">
+            <span>🔎</span>
+            <input type="text" id="campo-busqueda"
+                   placeholder="Buscar por radicado, nombre, asunto..."
+                   oninput="filtrarTabla()" autocomplete="off">
+        </div>
+        <div class="busqueda-der">
+            <select id="filtro-campo" onchange="filtrarTabla()">
+                <option value="todos">Todos los campos</option>
+                <option value="radicado">N° Radicado</option>
+                <option value="remitente">Remitente</option>
+                <option value="destinatario">Destinatario</option>
+                <option value="asunto">Asunto</option>
+                <option value="estado">Estado</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+        <span id="total-registros">Cargando...</span>
+        <div class="toolbar-der">
+            <button class="btn verde" onclick="exportarPDF()">📄 Exportar PDF</button>
+            <button class="btn azul"  onclick="cargarRadicados()">🔄 Actualizar</button>
+            <button class="btn gris"
+                    onclick="window.location.href='/pages/menu.html'">
+                ⬅ Menú
+            </button>
+        </div>
+    </div>
+
+    <!-- Tabla -->
+    <div class="tabla-contenedor">
+        <table id="tabla-radicados">
+            <thead>
+                <tr>
+                    <th>N° Radicado</th>
+                    <th>Fecha Rad.</th>
+                    <th>Hora</th>
+                    <th>Tipo</th>
+                    <th>Remitente</th>
+                    <th>Cargo Rem.</th>
+                    <th>Dependencia Rem.</th>
+                    <th>Destinatario</th>
+                    <th>Cargo Dest.</th>
+                    <th>Dependencia Dest.</th>
+                    <th>Asunto</th>
+                    <th>Medios</th>
+                    <th>Tiempo Resp.</th>
+                    <th>Fecha Est. Resp.</th>
+                    <th>Estado</th>
+                    <th>Usuario</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpo-tabla">
+                <tr>
+                    <td colspan="17" class="cargando">Cargando datos...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <footer>Sistema de Gestión Documental v1.0 | © 2026</footer>
+</div>
+
+<!-- Modal detalle -->
+<div id="modal-overlay" class="modal-overlay oculto" onclick="cerrarModal(event)">
+    <div class="modal-caja">
+        <div class="modal-header">
+            <h2 id="modal-titulo">Detalle del Radicado</h2>
+            <button class="modal-cerrar" onclick="cerrarModalBtn()">✕</button>
+        </div>
+        <div class="modal-body" id="modal-contenido"></div>
+       <div class="modal-footer">
+    <button class="btn verde" onclick="imprimirDetalle()">🖨 IMPRIMIR</button>
+    <button class="btn rojo"  onclick="guardarPDFDetalle()">📄 GUARDAR PDF</button>
+    <button class="btn gris"  onclick="cerrarModalBtn()">✕ Cerrar</button>
+</div>
+    </div>
+</div>
+
+<script src="/js/jspdf.umd.min.js"></script>
+<script src="/js/bd.js"></script>
+
+<!-- Modal cambiar estado -->
+<div id="modal-estado" class="modal-overlay oculto">
+    <div class="modal-estado-caja">
+        <div class="modal-header">
+            <h2 id="estado-titulo">Cambiar Estado</h2>
+            <button class="modal-cerrar" onclick="cerrarModalEstado()">✕</button>
+        </div>
+        <div class="modal-body">
+            <p id="estado-radicado-info"></p>
+            <div class="estado-opciones">
+                <button class="estado-btn pendiente"
+                        onclick="aplicarEstado('Pendiente')">
+                    🔴 Pendiente
+                </button>
+                <button class="estado-btn proceso"
+                        onclick="aplicarEstado('En proceso')">
+                    🟠 En proceso
+                </button>
+                <button class="estado-btn respondido"
+                        onclick="aplicarEstado('Respondido')">
+                    🟢 Respondido
+                </button>
+                <button class="estado-btn archivado"
+                        onclick="aplicarEstado('Archivado')">
+                    ⚫ Archivado
+                </button>
+                <button class="estado-btn vencido"
+                        onclick="aplicarEstado('Vencido')">
+                    🚨 Vencido
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

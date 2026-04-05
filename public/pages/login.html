@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGD — Login</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+
+    <div class="contenedor">
+
+        <!-- Banner superior -->
+        <div class="banner">
+            <span class="icono">🏛</span>
+            <h1>Sistema de Gestión Documental</h1>
+            <p>Módulo de Control de Acceso</p>
+        </div>
+
+        <!-- Caja del formulario -->
+        <div class="caja-login">
+
+            <div class="titulo-caja">
+                <h2>IDENTIFICACIÓN DE USUARIO</h2>
+            </div>
+
+            <!-- Mensaje de estado -->
+            <div id="mensaje" class="mensaje oculto"></div>
+
+            <!-- Formulario -->
+            <div class="formulario">
+
+                <div class="campo">
+                    <label>👤 Usuario:</label>
+                    <input
+                        type="text"
+                        id="usuario"
+                        placeholder="Ingrese su usuario"
+                        autocomplete="off"
+                    >
+                </div>
+
+                <div class="campo">
+                    <label>🔒 Contraseña:</label>
+                    <input
+                        type="password"
+                        id="contrasena"
+                        placeholder="Ingrese su contraseña"
+                    >
+                </div>
+
+                <button id="btn-ingresar" onclick="iniciarSesion()">
+                    🔑 INGRESAR AL SISTEMA
+                </button>
+
+            </div>
+
+            <!-- Credenciales de demo -->
+            <div class="demo">
+                <p class="demo-titulo">Credenciales de acceso (Demo)</p>
+                <div class="demo-fila admin">
+                    <span>Administrador</span>
+                    <span>admin / admin123</span>
+                </div>
+                <div class="demo-fila empleado">
+                    <span>Empleado</span>
+                    <span>empleado1 / emp2026</span>
+                </div>
+                <div class="demo-fila usuario">
+                    <span>Usuario</span>
+                    <span>usuario1 / user2026</span>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>Sistema de Gestión Documental v1.0 | © 2026</footer>
+
+    </div>
+
+    <script src="/js/login.js"></script>
+
+</body>
+</html>

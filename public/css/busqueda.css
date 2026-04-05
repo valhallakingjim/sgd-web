@@ -1,0 +1,60 @@
+.banner.verde { background: #1B5E20; }
+
+/* ── Barra de búsqueda ───────────────── */
+.barra-busqueda {
+    background: white;
+    padding: 15px 20px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    border-bottom: 2px solid #EEF3FA;
+}
+
+.busqueda-izq {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #F5F7FA;
+    border: 2px solid #2E74B5;
+    border-radius: 8px;
+    padding: 8px 14px;
+    min-width: 200px;
+}
+
+.lupa { font-size: 1.2rem; }
+
+.busqueda-izq input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    font-family: inherit;
+    outline: none;
+    color: #333;
+}
+
+.busqueda-der {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.busqueda-der select {
+    padding: 8px 12px;
+    border: 1px solid #AAA;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    background: white;
+    cursor: pointer;
+}
+
+/* ── Resaltar coincidencias ──────────── */
+.resaltado {
+    background: #FFE082;
+    border-radius: 2px;
+    padding: 0 2px;
+}

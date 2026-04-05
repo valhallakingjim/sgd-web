@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGD — Alertas</title>
+    <link rel="stylesheet" href="/css/alertas.css">
+</head>
+<body>
+<div class="contenedor">
+
+    <div class="banner">
+        <h1>🔔 ALERTAS AUTOMÁTICAS</h1>
+        <p>Documentos vencidos y próximos a vencer</p>
+    </div>
+
+    <!-- Resumen -->
+    <div class="resumen-grid">
+        <div class="resumen-card rojo">
+            <span class="resumen-icono">🚨</span>
+            <span class="resumen-numero" id="total-vencidos">0</span>
+            <span class="resumen-label">Vencidos</span>
+        </div>
+        <div class="resumen-card naranja">
+            <span class="resumen-icono">⚠️</span>
+            <span class="resumen-numero" id="total-proximos">0</span>
+            <span class="resumen-label">Próximos a vencer (5 días)</span>
+        </div>
+        <div class="resumen-card verde">
+            <span class="resumen-icono">✅</span>
+            <span class="resumen-numero" id="total-ok">0</span>
+            <span class="resumen-label">Al día</span>
+        </div>
+    </div>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+        <span id="info-alertas">Cargando...</span>
+        <div class="toolbar-der">
+            <button class="btn azul" onclick="cargarAlertas()">🔄 Actualizar</button>
+            <button class="btn gris" onclick="window.location.href='/pages/menu.html'">
+                ⬅ Menú
+            </button>
+        </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <button class="tab activo" id="tab-vencidos"
+                onclick="mostrarTab('vencidos')">
+            🚨 Vencidos
+        </button>
+        <button class="tab" id="tab-proximos"
+                onclick="mostrarTab('proximos')">
+            ⚠️ Próximos a vencer
+        </button>
+        <button class="tab" id="tab-todos"
+                onclick="mostrarTab('todos')">
+            📋 Todos pendientes
+        </button>
+    </div>
+
+    <!-- Tabla -->
+    <div class="tabla-contenedor">
+        <table>
+            <thead>
+                <tr>
+                    <th>N° Radicado</th>
+                    <th>Remitente</th>
+                    <th>Destinatario</th>
+                    <th>Asunto</th>
+                    <th>Fecha Rad.</th>
+                    <th>Fecha Límite</th>
+                    <th>Días Vencido</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpo-alertas">
+                <tr><td colspan="8" class="cargando">Cargando...</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <footer>Sistema de Gestión Documental v1.0 | © 2026</footer>
+</div>
+<script src="/js/alertas.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGD — Dashboard</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+<div class="contenedor">
+
+    <div class="banner">
+        <h1>📊 DASHBOARD — ESTADÍSTICAS</h1>
+        <p>Resumen general del sistema de gestión documental</p>
+    </div>
+
+    <div class="toolbar">
+        <span id="ultima-actualizacion">Cargando...</span>
+        <div class="toolbar-der">
+            <button class="btn azul" onclick="cargarDashboard()">🔄 Actualizar</button>
+            <button class="btn gris" onclick="window.location.href='/pages/menu.html'">
+                ⬅ Menú
+            </button>
+        </div>
+    </div>
+
+    <!-- Tarjetas resumen -->
+    <div class="cards-grid">
+        <div class="card azul">
+            <span class="card-icono">📋</span>
+            <span class="card-numero" id="stat-total">0</span>
+            <span class="card-label">Total Radicados</span>
+        </div>
+        <div class="card verde">
+            <span class="card-icono">✅</span>
+            <span class="card-numero" id="stat-respondidos">0</span>
+            <span class="card-label">Respondidos</span>
+        </div>
+        <div class="card naranja">
+            <span class="card-icono">⏳</span>
+            <span class="card-numero" id="stat-pendientes">0</span>
+            <span class="card-label">Pendientes</span>
+        </div>
+        <div class="card rojo">
+            <span class="card-icono">🚨</span>
+            <span class="card-numero" id="stat-vencidos">0</span>
+            <span class="card-label">Vencidos</span>
+        </div>
+    </div>
+
+    <!-- Gráficos -->
+    <div class="graficos-grid">
+
+        <!-- Por estado -->
+        <div class="grafico-caja">
+            <h3>📊 Documentos por Estado</h3>
+            <div id="grafico-estado" class="barras"></div>
+        </div>
+
+        <!-- Por tipo -->
+        <div class="grafico-caja">
+            <h3>📂 Documentos por Tipo</h3>
+            <div id="grafico-tipo" class="barras"></div>
+        </div>
+
+        <!-- Por asunto -->
+        <div class="grafico-caja">
+            <h3>📝 Documentos por Asunto</h3>
+            <div id="grafico-asunto" class="barras"></div>
+        </div>
+
+        <!-- Por usuario -->
+        <div class="grafico-caja">
+            <h3>👤 Radicados por Usuario</h3>
+            <div id="grafico-usuario" class="barras"></div>
+        </div>
+
+    </div>
+
+    <!-- Últimos radicados -->
+    <div class="tabla-reciente">
+        <h3>🕐 Últimos 5 Radicados</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>N° Radicado</th>
+                    <th>Fecha</th>
+                    <th>Remitente</th>
+                    <th>Asunto</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-recientes"></tbody>
+        </table>
+    </div>
+
+    <footer>Sistema de Gestión Documental v1.0 | © 2026</footer>
+</div>
+<script src="/js/dashboard.js"></script>
+</body>
+</html>

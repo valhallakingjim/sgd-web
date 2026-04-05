@@ -1,0 +1,198 @@
+/* ── Reset y base ─────────────────────────────── */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Calibri', 'Segoe UI', sans-serif;
+    background: #EEF3FA;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ── Contenedor principal ──────────────────────── */
+.contenedor {
+    width: 100%;
+    max-width: 520px;
+    padding: 20px;
+}
+
+/* ── Banner superior ───────────────────────────── */
+.banner {
+    background: #1F3864;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    border-radius: 12px 12px 0 0;
+}
+
+.banner .icono {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.banner h1 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.banner p {
+    font-size: 0.95rem;
+    color: #BDD7EE;
+}
+
+/* ── Caja del formulario ───────────────────────── */
+.caja-login {
+    background: white;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    overflow: hidden;
+}
+
+/* ── Título de la caja ─────────────────────────── */
+.titulo-caja {
+    background: #BDD7EE;
+    padding: 12px 20px;
+    text-align: center;
+}
+
+.titulo-caja h2 {
+    color: #1F3864;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* ── Mensaje de estado ─────────────────────────── */
+.mensaje {
+    margin: 15px 20px 0;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.mensaje.error {
+    background: #FFE0E0;
+    color: #C00000;
+    border-left: 4px solid #C00000;
+}
+
+.mensaje.exito {
+    background: #D4EDDA;
+    color: #155724;
+    border-left: 4px solid #28A745;
+}
+
+.mensaje.oculto {
+    display: none;
+}
+
+/* ── Formulario ────────────────────────────────── */
+.formulario {
+    padding: 25px 30px;
+}
+
+.campo {
+    margin-bottom: 18px;
+}
+
+.campo label {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #1F3864;
+    margin-bottom: 6px;
+}
+
+.campo input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 2px solid #2E74B5;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #FFFDE7;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.campo input:focus {
+    border-color: #1F3864;
+    background: white;
+}
+
+/* ── Botón ingresar ────────────────────────────── */
+#btn-ingresar {
+    width: 100%;
+    padding: 13px;
+    background: #1F3864;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s, transform 0.1s;
+    letter-spacing: 1px;
+}
+
+#btn-ingresar:hover {
+    background: #2E74B5;
+}
+
+#btn-ingresar:active {
+    transform: scale(0.98);
+}
+
+#btn-ingresar:disabled {
+    background: #888;
+    cursor: not-allowed;
+}
+
+/* ── Credenciales demo ─────────────────────────── */
+.demo {
+    margin: 0 20px 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #dee2e6;
+}
+
+.demo-titulo {
+    background: #2E74B5;
+    color: white;
+    text-align: center;
+    padding: 8px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.demo-fila {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 15px;
+    font-size: 0.85rem;
+}
+
+.demo-fila span:first-child {
+    font-weight: bold;
+}
+
+.demo-fila.admin    { background: #D4EDDA; color: #155724; }
+.demo-fila.empleado { background: #D1ECF1; color: #0C5460; }
+.demo-fila.usuario  { background: #FFF3CD; color: #856404; }
+
+/* ── Footer ────────────────────────────────────── */
+footer {
+    text-align: center;
+    padding: 15px;
+    color: #888;
+    font-size: 0.8rem;
+}

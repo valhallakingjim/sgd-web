@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGD — Gestión de Usuarios</title>
+    <link rel="stylesheet" href="/css/usuarios.css">
+</head>
+<body>
+<div class="contenedor">
+
+    <div class="banner">
+        <h1>👥 GESTIÓN DE USUARIOS</h1>
+        <p>Solo accesible para Administrador</p>
+    </div>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+        <span id="total-usuarios">Cargando...</span>
+        <div class="toolbar-der">
+            <button class="btn verde" onclick="mostrarFormulario()">
+                ➕ Nuevo Usuario
+            </button>
+            <button class="btn gris"
+                    onclick="window.location.href='/pages/menu.html'">
+                ⬅ Menú
+            </button>
+        </div>
+    </div>
+
+    <!-- Formulario nuevo usuario -->
+    <div id="form-nuevo" class="form-nuevo oculto">
+        <div class="form-titulo">➕ AGREGAR NUEVO USUARIO</div>
+        <div class="form-grid">
+            <div class="campo">
+                <label>Usuario</label>
+                <input type="text" id="nuevo-usuario"
+                       placeholder="Sin espacios (ej: juan123)">
+            </div>
+            <div class="campo">
+                <label>Contraseña</label>
+                <input type="password" id="nueva-contrasena"
+                       placeholder="Mínimo 6 caracteres">
+            </div>
+            <div class="campo">
+                <label>Rol</label>
+                <select id="nuevo-rol">
+                    <option value="">Seleccione...</option>
+                    <option value="Administrador">Administrador</option>
+                    <option value="Empleado">Empleado</option>
+                    <option value="Usuario">Usuario</option>
+                </select>
+            </div>
+        </div>
+        <div id="mensaje-form" class="mensaje oculto"></div>
+        <div class="form-botones">
+            <button class="btn verde" onclick="agregarUsuario()">
+                ✅ Guardar Usuario
+            </button>
+            <button class="btn gris" onclick="ocultarFormulario()">
+                ✕ Cancelar
+            </button>
+        </div>
+    </div>
+
+    <!-- Tabla usuarios -->
+    <div class="tabla-contenedor">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Usuario</th>
+                    <th>Rol</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpo-usuarios">
+                <tr><td colspan="5" class="cargando">Cargando...</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <footer>Sistema de Gestión Documental v1.0 | © 2026</footer>
+</div>
+<script src="/js/usuarios.js"></script>
+</body>
+</html>

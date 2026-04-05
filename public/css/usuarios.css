@@ -1,0 +1,179 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Calibri', 'Segoe UI', sans-serif;
+    background: #F5F7FA;
+    min-height: 100vh;
+    padding: 20px;
+}
+.contenedor { max-width: 800px; margin: 0 auto; }
+
+.banner {
+    background: #0277BD;
+    color: white;
+    padding: 20px;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+}
+.banner h1 { font-size: 1.2rem; margin-bottom: 5px; }
+.banner p  { font-size: 0.85rem; color: #B3E5FC; }
+
+/* ── Toolbar ─────────────────────────── */
+.toolbar {
+    background: #2E74B5;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: bold;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.toolbar-der { display: flex; gap: 10px; }
+
+.btn {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    transition: opacity 0.2s;
+}
+.btn:hover  { opacity: 0.85; }
+.btn.verde  { background: #375623; }
+.btn.gris   { background: #555; }
+.btn.rojo   { background: #C00000; }
+.btn.naranja{ background: #ED7D31; }
+.btn.azul   { background: #1F3864; }
+
+/* ── Formulario ──────────────────────── */
+.form-nuevo {
+    background: white;
+    border-left: 4px solid #375623;
+    padding: 20px;
+}
+.form-nuevo.oculto { display: none; }
+
+.form-titulo {
+    font-weight: bold;
+    font-size: 0.95rem;
+    color: #375623;
+    margin-bottom: 15px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.campo label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: bold;
+    color: #1F3864;
+    margin-bottom: 4px;
+}
+
+.campo input,
+.campo select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #AAA;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    outline: none;
+}
+
+.campo input:focus,
+.campo select:focus { border-color: #2E74B5; }
+
+.form-botones {
+    display: flex;
+    gap: 10px;
+}
+
+/* ── Mensaje ─────────────────────────── */
+.mensaje {
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+.mensaje.error  { background: #FFE0E0; color: #C00000; }
+.mensaje.exito  { background: #D4EDDA; color: #155724; }
+.mensaje.oculto { display: none; }
+
+/* ── Tabla ───────────────────────────── */
+.tabla-contenedor {
+    background: white;
+    overflow-x: auto;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+thead tr { background: #1F3864; color: white; }
+thead th { padding: 12px 15px; text-align: left; }
+tbody tr { border-bottom: 1px solid #E0E0E0; }
+tbody tr:hover { background: #F0F7FF; }
+tbody td { padding: 12px 15px; color: #333; }
+
+.cargando {
+    text-align: center;
+    padding: 30px !important;
+    color: #888;
+    font-style: italic;
+}
+
+/* ── Badges de rol y estado ──────────── */
+.badge-rol {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.78rem;
+    font-weight: bold;
+    color: white;
+}
+.badge-rol.admin    { background: #1F3864; }
+.badge-rol.empleado { background: #375623; }
+.badge-rol.usuario  { background: #ED7D31; }
+
+.badge-estado {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.78rem;
+    font-weight: bold;
+}
+.badge-estado.activo   { background: #D4EDDA; color: #155724; }
+.badge-estado.inactivo { background: #FFE0E0; color: #C00000; }
+
+/* ── Botones acción ──────────────────── */
+.btn-accion {
+    padding: 4px 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    margin-right: 5px;
+    transition: opacity 0.2s;
+}
+.btn-accion:hover { opacity: 0.85; }
+.btn-accion.desactivar { background: #C00000; }
+.btn-accion.activar    { background: #375623; }
+.btn-accion.contrasena { background: #ED7D31; }
+
+footer {
+    text-align: center;
+    padding: 15px;
+    color: #888;
+    font-size: 0.8rem;
+    background: white;
+    border-radius: 0 0 10px 10px;
+}

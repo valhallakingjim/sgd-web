@@ -1,0 +1,166 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Calibri', 'Segoe UI', sans-serif;
+    background: #EEF3FA;
+    min-height: 100vh;
+}
+
+.contenedor {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ── Banner ──────────────────────────── */
+.banner {
+    background: #1F3864;
+    color: white;
+    text-align: center;
+    padding: 25px 20px;
+    border-radius: 12px 12px 0 0;
+}
+.banner .icono      { font-size: 2.5rem; display: block; margin-bottom: 8px; }
+.banner h1          { font-size: 1.5rem; font-weight: bold; margin-bottom: 5px; }
+.banner p           { font-size: 0.9rem; color: #BDD7EE; }
+
+/* ── Info usuario ────────────────────── */
+.info-usuario {
+    background: #2E74B5;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+.info-usuario strong { color: #BDD7EE; }
+
+/* ── Alerta vencidos ─────────────────── */
+.alerta-vencidos {
+    background: #FFE0E0;
+    border-left: 5px solid #C00000;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9rem;
+    color: #C00000;
+    font-weight: bold;
+    animation: parpadeo 1.5s infinite;
+}
+
+.alerta-vencidos.oculto { display: none; }
+
+.alerta-icono { font-size: 1.4rem; }
+
+.alerta-vencidos button {
+    margin-left: auto;
+    background: #C00000;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.alerta-vencidos button:hover { background: #900000; }
+
+@keyframes parpadeo {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.7; }
+}
+
+/* ── Grid botones ────────────────────── */
+.grid-menu {
+    background: white;
+    padding: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 18px;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* ── Botones ─────────────────────────── */
+.btn-menu {
+    padding: 25px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    position: relative;
+}
+
+.btn-menu:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+.btn-menu:active { transform: scale(0.97); }
+
+.btn-icono { font-size: 2rem; }
+
+.btn-texto {
+    color: white;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 0.3px;
+}
+
+/* Botón cerrar sesión ocupa todo el ancho */
+.btn-menu.salir { grid-column: span 3; }
+
+/* Colores */
+.btn-menu.azul    { background: #2E74B5; }
+.btn-menu.oscuro  { background: #1F3864; }
+.btn-menu.verde   { background: #375623; }
+.btn-menu.naranja { background: #ED7D31; }
+.btn-menu.morado  { background: #4A148C; }
+.btn-menu.celeste { background: #0277BD; }
+.btn-menu.rojo    { background: #C00000; }
+
+/* Badge de alertas */
+.badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #C00000;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: parpadeo 1s infinite;
+}
+
+.badge.oculto { display: none; }
+
+/* ── Footer ──────────────────────────── */
+footer {
+    text-align: center;
+    padding: 15px;
+    color: #888;
+    font-size: 0.8rem;
+}
+
+/* ── Responsive ──────────────────────── */
+@media (max-width: 600px) {
+    .grid-menu { grid-template-columns: 1fr 1fr; }
+    .btn-menu.salir { grid-column: span 2; }
+}

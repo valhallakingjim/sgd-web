@@ -1,0 +1,6 @@
+node_modules/
+database/sgd.db
+database/sgd.db-shm
+database/sgd.db-wal
+.env
+*.log

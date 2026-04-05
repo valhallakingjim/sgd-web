@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGD — Registro</title>
+    <link rel="stylesheet" href="/css/registro.css">
+</head>
+<body>
+
+<div class="contenedor">
+
+    <div class="banner">
+        <h1>📋 FORMULARIO DE REGISTRO DE DOCUMENTOS</h1>
+        <p>Complete los campos y presione RADICAR para guardar</p>
+    </div>
+
+    <div id="mensaje" class="mensaje oculto"></div>
+
+    <form id="form-registro">
+
+        <!-- SECCIÓN 1: Datos del Radicado -->
+        <div class="seccion azul"><h2>📌 DATOS DEL RADICADO</h2></div>
+        <div class="grid-2">
+            <div class="campo">
+                <label>N° Radicado</label>
+                <input type="text" id="num_radicado" readonly>
+            </div>
+            <div class="campo">
+                <label>Tipo de Registro</label>
+                <select id="tipo_registro">
+                    <option value="">Seleccione...</option>
+                    <option>Recibidas</option>
+                    <option>Despachadas</option>
+                    <option>Internas</option>
+                </select>
+            </div>
+            <div class="campo">
+                <label>Fecha de Radicado</label>
+                <input type="text" id="fecha_radicado" readonly>
+            </div>
+            <div class="campo">
+                <label>Hora de Radicado</label>
+                <input type="text" id="hora_radicado" readonly>
+            </div>
+            <div class="campo">
+                <label>Fecha del Documento</label>
+                <input type="date" id="fecha_documento">
+            </div>
+            <div class="campo">
+                <label>Estado</label>
+                <select id="estado">
+                    <option value="">Seleccione...</option>
+                    <option>Pendiente</option>
+                    <option>En proceso</option>
+                    <option>Respondido</option>
+                    <option>Archivado</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 2: Destinatario con autocompletado -->
+        <div class="seccion verde"><h2>📬 DATOS DEL DESTINATARIO</h2></div>
+        <div class="grid-2">
+            <div class="campo">
+                <label>Nombre Destinatario</label>
+                <select id="nombre_destinatario" onchange="autocompletarDestinatario()">
+                    <option value="">Seleccione...</option>
+                    <option>CLAUDIA DIAZ</option>
+                    <option>YULI CASAMACHI</option>
+                    <option>JOANA ANAYA</option>
+                    <option>CAROLINA NAVARRO</option>
+                    <option>YOLIMA PIZARE</option>
+                    <option>VANESA PATIÑO</option>
+                    <option>PAOLA RUIZ</option>
+                    <option>DANIELA BONILLA</option>
+                    <option>KEVIN MOSQUERA</option>
+                    <option>JULIANA BURBANO</option>
+                    <option>ELOIM JIMENEZ</option>
+                    <option>UTERO GARCIA</option>
+                    <option>SOFIA DORADO</option>
+                </select>
+            </div>
+            <div class="campo">
+                <label>Cargo</label>
+                <input type="text" id="cargo_destinatario" readonly>
+            </div>
+            <div class="campo">
+                <label>Dependencia</label>
+                <input type="text" id="dependencia_dest" readonly>
+            </div>
+            <div class="campo">
+                <label>Dirección</label>
+                <input type="text" id="direccion_dest" readonly>
+            </div>
+            <div class="campo">
+                <label>Teléfono</label>
+                <input type="text" id="telefono_dest" readonly>
+            </div>
+            <div class="campo">
+                <label>Ciudad</label>
+                <input type="text" id="ciudad_dest" readonly>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 3: Remitente con autocompletado -->
+        <div class="seccion morado"><h2>📤 DATOS DEL REMITENTE</h2></div>
+        <div class="grid-2">
+            <div class="campo">
+                <label>Nombre Remitente</label>
+                <select id="nombre_remitente" onchange="autocompletarRemitente()">
+                    <option value="">Seleccione...</option>
+                    <option>KEVIN MOSQUERA</option>
+                    <option>JULIANA BURBANO</option>
+                    <option>ELOIM JIMENEZ</option>
+                    <option>UTERO GARCIA</option>
+                    <option>SOFIA DORADO</option>
+                    <option>CLAUDIA DIAZ</option>
+                    <option>YULI CASAMACHI</option>
+                    <option>JOANA ANAYA</option>
+                    <option>CAROLINA NAVARRO</option>
+                    <option>YOLIMA PIZARE</option>
+                    <option>VANESA PATIÑO</option>
+                    <option>PAOLA RUIZ</option>
+                </select>
+            </div>
+            <div class="campo">
+                <label>Cargo</label>
+                <input type="text" id="cargo_remitente" readonly>
+            </div>
+            <div class="campo">
+                <label>Dependencia</label>
+                <input type="text" id="dependencia_remitente" readonly>
+            </div>
+            <div class="campo">
+                <label>Dirección</label>
+                <input type="text" id="direccion_remitente" readonly>
+            </div>
+            <div class="campo">
+                <label>Teléfono</label>
+                <input type="text" id="telefono_remitente" readonly>
+            </div>
+            <div class="campo">
+                <label>Ciudad</label>
+                <input type="text" id="ciudad_remitente" readonly>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 4: Información del documento -->
+        <div class="seccion oscuro"><h2>📄 INFORMACIÓN DEL DOCUMENTO</h2></div>
+        <div class="grid-1">
+            <div class="campo">
+                <label>Asunto</label>
+                <select id="asunto" onchange="autocompletarAsunto()">
+                    <option value="">Seleccione...</option>
+                    <option>Tutela</option>
+                    <option>Peticion</option>
+                    <option>Queja</option>
+                    <option>Reclamo</option>
+                    <option>Sugerencia</option>
+                    <option>Denuncia</option>
+                </select>
+            </div>
+        </div>
+        <div class="grid-2">
+            <div class="campo">
+                <label>Medios de Entrega</label>
+                <select id="medios_entrega">
+                    <option value="">Seleccione...</option>
+                    <option>Personal</option>
+                    <option>Fax</option>
+                    <option>Correo electronico</option>
+                </select>
+            </div>
+            <div class="campo">
+                <label>Tiempo de Respuesta</label>
+                <input type="text" id="tiempo_respuesta" readonly
+                       placeholder="Se calcula automáticamente">
+            </div>
+            <div class="campo">
+                <label>Fecha Est. Respuesta</label>
+                <input type="text" id="fecha_est_respuesta" readonly
+                       placeholder="Se calcula automáticamente">
+            </div>
+        </div>
+        <div class="grid-1">
+            <div class="campo">
+                <label>Observaciones</label>
+                <textarea id="observaciones" rows="3"
+                          placeholder="Observaciones adicionales..."></textarea>
+            </div>
+        </div>
+
+        <!-- Adjunto -->
+        <div class="grid-1">
+            <div class="campo">
+                <label>Documento Adjunto</label>
+                <div class="adjunto-box">
+                    <input type="file" id="archivo_adjunto"
+                           accept=".pdf,.doc,.docx,.jpg,.png">
+                    <span id="nombre-archivo">Ningún archivo seleccionado</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botones -->
+        <div class="botones">
+            <button type="button" class="btn verde"
+                    onclick="nuevoRadicado()">
+                ✨ NUEVO
+            </button>
+            <button type="button" class="btn azul"
+                    onclick="radicarDocumento()">
+                ✅ RADICAR
+            </button>
+            <button type="button" class="btn naranja"
+                    onclick="adjuntarDocumento()">
+                📎 ADJUNTAR DOCUMENTO
+            </button>
+            <button type="button" class="btn gris"
+                    onclick="window.location.href='/pages/menu.html'">
+                ⬅ MENÚ
+            </button>
+        </div>
+
+    </form>
+</div>
+
+<script src="/js/registro.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGD — Menú Principal</title>
+    <link rel="stylesheet" href="/css/menu.css">
+</head>
+<body>
+
+<div class="contenedor">
+
+    <!-- Banner -->
+    <div class="banner">
+        <span class="icono">🏛</span>
+        <h1>Sistema de Gestión Documental</h1>
+        <p>MENÚ PRINCIPAL — Seleccione una opción</p>
+    </div>
+
+    <!-- Info usuario -->
+    <div class="info-usuario">
+        <span>👤 Usuario: <strong id="nombre-usuario"></strong></span>
+        <span>🎭 Rol: <strong id="rol-usuario"></strong></span>
+        <span id="fecha-hora"></span>
+    </div>
+
+    <!-- Alerta de documentos vencidos -->
+    <div id="alerta-vencidos" class="alerta-vencidos oculto">
+        <span class="alerta-icono">⚠️</span>
+        <span id="alerta-texto"></span>
+        <button onclick="ir('alertas.html')">Ver Alertas</button>
+    </div>
+
+    <!-- Grid botones -->
+    <div class="grid-menu">
+
+        <button class="btn-menu azul" id="btn-registro" onclick="ir('registro.html')">
+            <span class="btn-icono">📋</span>
+            <span class="btn-texto">REGISTRO DE DOCUMENTOS</span>
+        </button>
+
+        <button class="btn-menu oscuro" id="btn-bd" onclick="ir('bd_radicados.html')">
+            <span class="btn-icono">🗄</span>
+            <span class="btn-texto">BASE DE DATOS</span>
+        </button>
+
+        <button class="btn-menu verde" id="btn-busqueda" onclick="ir('busqueda.html')">
+            <span class="btn-icono">🔍</span>
+            <span class="btn-texto">BÚSQUEDA INTELIGENTE</span>
+        </button>
+
+        <button class="btn-menu naranja" id="btn-alertas" onclick="ir('alertas.html')">
+            <span class="btn-icono">🔔</span>
+            <span class="btn-texto">ALERTAS AUTOMÁTICAS</span>
+            <span id="badge-alertas" class="badge oculto">0</span>
+        </button>
+
+        <button class="btn-menu morado" id="btn-dashboard" onclick="ir('dashboard.html')">
+            <span class="btn-icono">📊</span>
+            <span class="btn-texto">DASHBOARD</span>
+        </button>
+
+        <button class="btn-menu celeste" id="btn-usuarios" onclick="ir('usuarios.html')"
+                id="btn-usuarios">
+            <span class="btn-icono">👥</span>
+            <span class="btn-texto">GESTIÓN DE USUARIOS</span>
+        </button>
+
+        <button class="btn-menu rojo salir" onclick="cerrarSesion()">
+            <span class="btn-icono">🚪</span>
+            <span class="btn-texto">CERRAR SESIÓN</span>
+        </button>
+
+    </div>
+
+    <footer>Sistema de Gestión Documental v1.0 | © 2026</footer>
+</div>
+
+<script src="/js/menu.js"></script>
+</body>
+</html>

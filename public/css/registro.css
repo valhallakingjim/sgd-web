@@ -1,0 +1,164 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Calibri', 'Segoe UI', sans-serif;
+    background: #F5F7FA;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.contenedor {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ── Banner ──────────────────────────── */
+.banner {
+    background: #1F3864;
+    color: white;
+    padding: 20px 25px;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+}
+
+.banner h1 { font-size: 1.2rem; margin-bottom: 5px; }
+.banner p  { font-size: 0.85rem; color: #BDD7EE; }
+
+/* ── Mensaje ─────────────────────────── */
+.mensaje {
+    padding: 12px 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-align: center;
+}
+.mensaje.error  { background: #FFE0E0; color: #C00000; }
+.mensaje.exito  { background: #D4EDDA; color: #155724; }
+.mensaje.oculto { display: none; }
+
+/* ── Secciones ───────────────────────── */
+.seccion {
+    padding: 10px 20px;
+    margin-top: 2px;
+}
+.seccion h2 {
+    color: white;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
+.seccion.azul   { background: #2E74B5; }
+.seccion.verde  { background: #1B5E20; }
+.seccion.morado { background: #4A148C; }
+.seccion.oscuro { background: #1F3864; }
+
+/* ── Grids ───────────────────────────── */
+.grid-2 {
+    background: white;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.grid-1 {
+    background: white;
+    padding: 15px 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+/* ── Campos ──────────────────────────── */
+.campo label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #1F3864;
+    margin-bottom: 4px;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #AAAAAA;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    background: white;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+    border-color: #2E74B5;
+    box-shadow: 0 0 0 2px rgba(46,116,181,0.15);
+}
+
+.campo input[readonly] {
+    background: #F0F0F0;
+    color: #555;
+}
+
+/* ── Botones ─────────────────────────── */
+.botones {
+    background: white;
+    padding: 20px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 7px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    transition: transform 0.1s, opacity 0.2s;
+    letter-spacing: 0.5px;
+}
+
+.btn:hover   { opacity: 0.9; }
+.btn:active  { transform: scale(0.97); }
+.btn.verde   { background: #375623; }
+.btn.azul    { background: #2E74B5; }
+.btn.rojo    { background: #C00000; }
+.btn.gris    { background: #555555; }
+
+/* ── Responsive ──────────────────────── */
+@media (max-width: 600px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .botones { flex-direction: column; }
+} 
+/* ── Adjunto ─────────────────────────── */
+.adjunto-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border: 2px dashed #2E74B5;
+    border-radius: 6px;
+    background: #F0F7FF;
+}
+
+.adjunto-box input[type="file"] {
+    width: auto;
+    border: none;
+    background: transparent;
+    padding: 0;
+}
+
+#nombre-archivo {
+    font-size: 0.85rem;
+    color: #555;
+    font-style: italic;
+}
+
+.btn.naranja { background: #ED7D31; }
