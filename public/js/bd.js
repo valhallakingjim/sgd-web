@@ -385,6 +385,18 @@ async function exportarPDF() {
 }
 
 function generarPDF() {
+    function limpiar(texto) {
+        if (!texto) return '';
+        return String(texto)
+            .replace(/á/g,'a').replace(/Á/g,'A')
+            .replace(/é/g,'e').replace(/É/g,'E')
+            .replace(/í/g,'i').replace(/Í/g,'I')
+            .replace(/ó/g,'o').replace(/Ó/g,'O')
+            .replace(/ú/g,'u').replace(/Ú/g,'U')
+            .replace(/ü/g,'u').replace(/Ü/g,'U')
+            .replace(/ñ/g,'n').replace(/Ñ/g,'N')
+            .replace(/[^\x00-\x7F]/g,'');
+    }
     try {
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF('l', 'mm', 'a4');
@@ -506,7 +518,7 @@ function imprimirDetalle() {
 
 function guardarPDFDetalle() {
     if (!window.jspdf?.jsPDF) {
-        alert('Recargue la página con F5 e intente de nuevo.');
+        alert('Recargue la pagina con F5 e intente de nuevo.');
         return;
     }
     const titulo = document.getElementById('modal-titulo').textContent;
@@ -514,104 +526,134 @@ function guardarPDFDetalle() {
     const r      = registrosFiltrados.find(x => x.num_radicado === numRad);
     if (!r) { alert('Error al obtener los datos.'); return; }
 
+    // Limpiar caracteres especiales para PDF
+    function limpiar(texto) {
+        if (!texto) return '';
+        return String(texto)
+            .replace(/á/g,'a').replace(/Á/g,'A')
+            .replace(/é/g,'e').replace(/É/g,'E')
+            .replace(/í/g,'i').replace(/Í/g,'I')
+            .replace(/ó/g,'o').replace(/Ó/g,'O')
+            .replace(/ú/g,'u').replace(/Ú/g,'U')
+            .replace(/ü/g,'u').replace(/Ü/g,'U')
+            .replace(/ñ/g,'n').replace(/Ñ/g,'N')
+            .replace(/°/g,'').replace(/[^\x00-\x7F]/g,'');
+    }
+
     try {
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF('p', 'mm', 'a4');
 
+        // Encabezado
         doc.setFillColor(31, 56, 100);
         doc.rect(0, 0, 210, 30, 'F');
         doc.setTextColor(255, 255, 255);
         doc.setFontSize(14);
         doc.setFont('helvetica', 'bold');
-        doc.text('SISTEMA DE GESTIÓN DOCUMENTAL', 105, 13, { align: 'center' });
+        doc.text('SISTEMA DE GESTION DOCUMENTAL', 105, 13, { align: 'center' });
         doc.setFontSize(10);
         doc.setFont('helvetica', 'normal');
-        doc.text('Detalle del Radicado: ' + r.num_radicado, 105, 22, { align: 'center' });
+        doc.text('Detalle del Radicado: ' + limpiar(r.num_radicado), 105, 22, { align: 'center' });
         doc.setFontSize(8);
         doc.setTextColor(189, 215, 238);
         doc.text('Generado: ' + new Date().toLocaleDateString('es-CO') +
-                 '  |  Usuario: ' + (usuario || ''), 105, 28, { align: 'center' });
+                 '  |  Usuario: ' + limpiar(usuario || ''), 105, 28, { align: 'center' });
 
         let y = 40;
 
-        function seccion(titulo, color, campos) {
+        function seccion(tituloSec, color, campos) {
             const rgb = {
                 azul:   [46, 116, 181],
                 verde:  [27, 94, 32],
                 morado: [74, 20, 140],
                 oscuro: [31, 56, 100]
             }[color] || [46, 116, 181];
+
             doc.setFillColor(...rgb);
             doc.rect(10, y - 5, 190, 9, 'F');
             doc.setTextColor(255, 255, 255);
             doc.setFontSize(9);
             doc.setFont('helvetica', 'bold');
-            doc.text(titulo, 13, y + 1);
+            doc.text(limpiar(tituloSec), 13, y + 1);
             y += 12;
+
             doc.setFont('helvetica', 'normal');
             doc.setFontSize(8);
+
             for (let i = 0; i < campos.length; i += 2) {
                 const col1 = campos[i];
                 const col2 = campos[i + 1];
+
                 doc.setFillColor(248, 250, 253);
                 doc.rect(10, y - 4, 190, 10, 'F');
+
+                // Campo izquierdo
                 doc.setTextColor(100, 100, 100);
                 doc.setFont('helvetica', 'bold');
-                doc.text(col1.label + ':', 12, y);
+                doc.text(limpiar(col1.label) + ':', 12, y);
                 doc.setTextColor(30, 30, 30);
                 doc.setFont('helvetica', 'normal');
-                doc.text(String(col1.valor || '—'), 12, y + 5);
+                doc.text(limpiar(col1.valor), 12, y + 5);
+
+                // Campo derecho
                 if (col2) {
                     doc.setTextColor(100, 100, 100);
                     doc.setFont('helvetica', 'bold');
-                    doc.text(col2.label + ':', 107, y);
+                    doc.text(limpiar(col2.label) + ':', 107, y);
                     doc.setTextColor(30, 30, 30);
                     doc.setFont('helvetica', 'normal');
-                    doc.text(String(col2.valor || '—'), 107, y + 5);
+                    doc.text(limpiar(col2.valor), 107, y + 5);
                 }
+
                 y += 13;
                 if (y > 265) { doc.addPage(); y = 20; }
             }
             y += 4;
         }
 
-        seccion('📌 DATOS DEL RADICADO', 'azul', [
-            { label: 'N° Radicado',       valor: r.num_radicado   },
-            { label: 'Tipo de Registro',  valor: r.tipo_registro  },
-            { label: 'Fecha de Radicado', valor: r.fecha_radicado },
-            { label: 'Hora de Radicado',  valor: r.hora_radicado  },
-            { label: 'Fecha Documento',   valor: r.fecha_documento},
-            { label: 'Estado',            valor: r.estado         }
+        seccion('DATOS DEL RADICADO', 'azul', [
+            { label: 'N Radicado',       valor: r.num_radicado    },
+            { label: 'Tipo de Registro', valor: r.tipo_registro   },
+            { label: 'Fecha Radicado',   valor: r.fecha_radicado  },
+            { label: 'Hora Radicado',    valor: r.hora_radicado   },
+            { label: 'Fecha Documento',  valor: r.fecha_documento },
+            { label: 'Estado',           valor: r.estado          }
         ]);
-        seccion('📬 DATOS DEL DESTINATARIO', 'verde', [
+
+        seccion('DATOS DEL DESTINATARIO', 'verde', [
             { label: 'Nombre',      valor: r.nombre_destinatario },
             { label: 'Cargo',       valor: r.cargo_destinatario  },
             { label: 'Dependencia', valor: r.dependencia_dest    },
-            { label: 'Dirección',   valor: r.direccion_dest      },
-            { label: 'Teléfono',    valor: r.telefono_dest       },
+            { label: 'Direccion',   valor: r.direccion_dest      },
+            { label: 'Telefono',    valor: r.telefono_dest       },
             { label: 'Ciudad',      valor: r.ciudad_dest         }
         ]);
-        seccion('📤 DATOS DEL REMITENTE', 'morado', [
+
+        seccion('DATOS DEL REMITENTE', 'morado', [
             { label: 'Nombre',      valor: r.nombre_remitente      },
             { label: 'Cargo',       valor: r.cargo_remitente       },
             { label: 'Dependencia', valor: r.dependencia_remitente },
-            { label: 'Dirección',   valor: r.direccion_remitente   },
-            { label: 'Teléfono',    valor: r.telefono_remitente    },
+            { label: 'Direccion',   valor: r.direccion_remitente   },
+            { label: 'Telefono',    valor: r.telefono_remitente    },
             { label: 'Ciudad',      valor: r.ciudad_remitente      }
         ]);
-        seccion('📄 INFORMACIÓN DEL DOCUMENTO', 'oscuro', [
-            { label: 'Asunto',               valor: r.asunto             },
-            { label: 'Medios de Entrega',    valor: r.medios_entrega     },
-            { label: 'Tiempo de Respuesta',  valor: r.tiempo_respuesta   },
-            { label: 'Fecha Est. Respuesta', valor: r.fecha_est_respuesta},
-            { label: 'Usuario Registro',     valor: r.usuario_registro   },
-            { label: 'Observaciones',        valor: r.observaciones      }
+
+        seccion('INFORMACION DEL DOCUMENTO', 'oscuro', [
+            { label: 'Asunto',           valor: r.asunto              },
+            { label: 'Medios Entrega',   valor: r.medios_entrega      },
+            { label: 'Tiempo Respuesta', valor: r.tiempo_respuesta    },
+            { label: 'Fecha Est. Resp',  valor: r.fecha_est_respuesta },
+            { label: 'Usuario Registro', valor: r.usuario_registro    },
+            { label: 'Observaciones',    valor: r.observaciones       }
         ]);
 
+        // Footer
         doc.setTextColor(150, 150, 150);
         doc.setFontSize(8);
-        doc.text('SGD v1.0  |  © ' + new Date().getFullYear(), 105, 287, { align: 'center' });
-        doc.save('Radicado_' + r.num_radicado + '.pdf');
+        doc.text('SGD v1.0  |  (c) ' + new Date().getFullYear(),
+                 105, 287, { align: 'center' });
+
+        doc.save('Radicado_' + limpiar(r.num_radicado) + '.pdf');
 
     } catch (error) {
         console.error('Error PDF:', error);
